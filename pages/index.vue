@@ -15,7 +15,7 @@
           </v-flex>
         </v-card-title>
         <v-card-text class="grey--text text--lighten-2">
-          <p>MarketWatch is a financial market data program developed in the Nuxt Vuetify framework.</p>
+          <p>MarketWatchh is a financial market data program developed in the Nuxt Vuetify framework.</p>
           <p>
             <br>
             <br>
