@@ -1,27 +1,26 @@
 {
-  "name": "nuxtjs",
+  "name": "MarketWatch",
   "version": "1.0.0",
-  "description": "My astonishing Nuxt.js project",
-  "author": "msweeneydev",
+  "description": "My solid Nuxt.js project",
+  "author": "Frank",
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt generate",
-    "start": "nuxt start"
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
     "cookie-universal-nuxt": "^2.1.4",
     "hchs-vue-charts": "^1.2.8",
-    "moment": "^2.27.0",
+    "moment": "2.24.0",
     "numeral": "^2.0.6",
-    "nuxt": "^2.0.0",
-    "sweetalert2": "^9.17.0"
+    "nuxt": "^2.13.3",
+    "sweetalert2": "^9.10.12"
   },
   "devDependencies": {
-    "node-sass": "^4.14.1",
-    "nodemon": "^1.18.9",
-    "sass-loader": "^9.0.2"
+    "@nuxtjs/vuetify": "^1.0.0"
   }
 }
