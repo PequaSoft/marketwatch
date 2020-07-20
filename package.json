@@ -12,6 +12,8 @@
   "dependencies": {
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
+    "cookie-universal-nuxt": "^2.1.4",
+    "hchs-vue-charts": "^1.2.8",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
