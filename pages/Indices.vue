@@ -69,6 +69,7 @@
                         </template>
                       </v-data-table> 
                     </v-flex>   
+                    
                     <v-flex class="hidden-lg-and-up" xs12 sm12 md12 lg12 >
                       <v-data-table id="IndicesTable_1" :headers="headers" :sort-by="['section']" :items="results_a" :items-per-page="6" class="elevation-1 fixed-header">
                         <template v-slot:item.actions="{ item }" v-slot:activator="{ on, attrs }">
