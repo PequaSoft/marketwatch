@@ -2,7 +2,7 @@
   <div class="dashboard ">
       <div align="center">
         <v-layout justify-center>
-          <v-flex class="hidden-sm-and-down" md10>
+          <v-flex >
           <h1 class="subheading grey--text text-center ">Market Watch</h1>
           </v-flex> 
           <v-flex class="hidden-sm-and-down" md1>
@@ -41,16 +41,13 @@
                 <v-btn text color="primary" @click="modal2 = false">Cancel</v-btn>
               </v-card>
             </v-dialog>
-
-
-
           </v-flex> 
         </v-layout>        
       <v-layout row wrap justify-center>
         <v-flex>
                 <v-card flat class="mx-auto" height="400" >
             
-              <v-flex xs11 md12 lg11 >
+              <v-flex xs12 sm12 md12 lg12 >
                 <v-tabs class="text-left" v-model="startupTab" background-color=rgb(230,230,235)>
                   <v-tab>Index</v-tab>
                   <v-tab>Futures</v-tab>
@@ -62,8 +59,18 @@
                   <v-tab>Mutual Funds</v-tab>                      
                 <v-tab-item>
                   <v-card flat height="400">
-                    <v-flex xs9 md12 lg12 class="my-1">
+                    <v-flex class="hidden-md-and-down" xs12 sm12 md12 lg12 >
                       <v-data-table id="IndicesTable_1" :headers="headers" :sort-by="['section']" :items="results_a" :items-per-page="10" class="elevation-1 fixed-header">
+                        <template v-slot:item.actions="{ item }" v-slot:activator="{ on, attrs }">
+                          <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
+                          <v-icon color="green darken-2" @mouseover="toolTipView = true" @mouseleave="toolTipView = false" @click="handleClick(item)">mdi-format-list-bulleted-square</v-icon>
+                          <v-tooltip left v-model="toolTipDelete">Delete Item</v-tooltip>
+                          <v-icon color="red darken-2" @mouseover="toolTipDelete = true" @mouseleave="toolTipDelete = false" @click="deleteItem('INDEX',item)">mdi-delete</v-icon>
+                        </template>
+                      </v-data-table> 
+                    </v-flex>   
+                    <v-flex class="hidden-lg-and-up" xs12 sm12 md12 lg12 >
+                      <v-data-table id="IndicesTable_1" :headers="headers" :sort-by="['section']" :items="results_a" :items-per-page="6" class="elevation-1 fixed-header">
                         <template v-slot:item.actions="{ item }" v-slot:activator="{ on, attrs }">
                           <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
                           <v-icon color="green darken-2" @mouseover="toolTipView = true" @mouseleave="toolTipView = false" @click="handleClick(item)">mdi-format-list-bulleted-square</v-icon>
@@ -79,7 +86,7 @@
                 </v-tab-item>
                 <v-tab-item>
                   <v-card flat height="400">
-                    <v-flex xs9 md12 lg12 class="my-1">
+                    <v-flex xs12 md12 lg12 class="my-1">
                       <v-data-table id="IndicesTable_2" :headers="headers" :sort-by="['section']" :items="results_b" :items-per-page="10" class="elevation-1 fixed-header">
                         <template v-slot:item.actions="{ item }">
                           <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
@@ -96,7 +103,7 @@
                 </v-tab-item>
                 <v-tab-item>
                   <v-card flat height="400">
-                    <v-flex xs9 md12 lg12 class="my-1">
+                    <v-flex xs12 md12 lg12 class="my-1">
                       <v-data-table id="IndicesTable_3" :headers="headers" :sort-by="['section']" :items="results_c" :items-per-page="10" class="elevation-1 fixed-header">
                         <template v-slot:item.actions="{ item }">
                           <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
@@ -113,7 +120,7 @@
                 </v-tab-item>
                 <v-tab-item>
                   <v-card flat height="400">
-                    <v-flex xs9 md12 lg12 class="my-1">
+                    <v-flex xs12 md12 lg12 class="my-1">
                       <v-data-table id="IndicesTable_4" :headers="headers" :sort-by="['section']" :items="results_d" :items-per-page="10" class="elevation-1 fixed-header">
                         <template v-slot:item.actions="{ item }">
                           <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
@@ -130,7 +137,7 @@
                 </v-tab-item>                
                 <v-tab-item>
                   <v-card flat height="400">
-                    <v-flex xs9 md12 lg12 class="my-1">
+                    <v-flex xs12 md12 lg12 class="my-1">
                       <v-data-table id="IndicesTable_5" :headers="headers" :sort-by="['section']" :items="results_e" :items-per-page="10" class="elevation-1 fixed-header">
                         <template v-slot:item.actions="{ item }">
                           <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
@@ -147,7 +154,7 @@
                 </v-tab-item>                
                 <v-tab-item>
                   <v-card flat height="400">
-                    <v-flex xs9 md12 lg12 class="my-1">
+                    <v-flex xs12 md12 lg12 class="my-1">
                       <v-data-table id="IndicesTable_6" :headers="headers" :sort-by="['section']" :items="results_f" :items-per-page="10" class="elevation-1 fixed-header">
                         <template v-slot:item.actions="{ item }">
                           <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
@@ -164,7 +171,7 @@
                 </v-tab-item>                
                 <v-tab-item>
                   <v-card flat height="400">
-                    <v-flex xs9 md12 lg12 class="my-1">
+                    <v-flex xs12 md12 lg12 class="my-1">
                       <v-data-table id="IndicesTable_7" :headers="headers" :sort-by="['section']" :items="results_g" :items-per-page="10" class="elevation-1 fixed-header">
                         <template v-slot:item.actions="{ item }">
                           <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
@@ -181,7 +188,7 @@
                 </v-tab-item>                                
                 <v-tab-item>
                   <v-card flat height="400">
-                    <v-flex xs9 md12 lg12 class="my-1">
+                    <v-flex xs12 md12 lg12 class="my-1">
                       <v-data-table id="IndicesTable_8" :headers="mf_headers" :sort-by="['section']" :items="results_h" :items-per-page="10" class="elevation-1 fixed-header">
                         <template v-slot:item.actions="{ item }">
                           <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
