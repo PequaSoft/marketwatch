@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  
+  "routes": [
+    {
+      "src": "^/",
+      "dest": "/index.vue"
+  
+    },
+    {
+      "src": "^/indices",
+      "dest": "/indices.vue"
+    }                    
+  ]
+}
