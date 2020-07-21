@@ -59,7 +59,7 @@
                   <v-tab>Mutual Funds</v-tab>                      
                 <v-tab-item>
                   <v-card flat height="400">
-                    <v-flex class="hidden-md-and-down" xs12 sm12 md12 lg12 class="my-1">
+                    <v-flex class="hidden-md-and-down my-1" xs12 sm12 md12 lg12 >
                       <v-data-table id="IndicesTable_1" :headers="headers" :sort-by="['section']" :items="results_a" :items-per-page="10" class="elevation-1 fixed-header">
                         <template v-slot:item.actions="{ item }" v-slot:activator="{ on, attrs }">
                           <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
@@ -70,7 +70,7 @@
                       </v-data-table> 
                     </v-flex>   
                     
-                    <v-flex class="hidden-lg-and-up" xs12 sm12 md12 lg12 class="my-1">
+                    <v-flex class="hidden-lg-and-up my-1" xs12 sm12 md12 lg12 >
                       <v-data-table id="IndicesTable_1" :headers="headers" :sort-by="['section']" :items="results_a" :items-per-page="6" class="elevation-1 fixed-header">
                         <template v-slot:item.actions="{ item }" v-slot:activator="{ on, attrs }">
                           <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
