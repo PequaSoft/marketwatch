@@ -27,7 +27,7 @@
                     <v-divider></v-divider>
                     <div style="padding: 15px;">
                       <v-layout row wrap style="height: 65px; width: 450px;" pl-3 justify-center>
-                        <v-text-field label="..." dense outlined style="height: 65px;" v-model="sSearch"></v-text-field>     
+                        <v-text-field label="enter company name..." dense outlined style="height: 65px;" v-model="sSearch"></v-text-field>     
                         <v-btn text color="primary" @click="axiosLoadSearch">Search</v-btn>
                       </v-layout>
                        <div style="padding: 5px; height: 300px; text-align: left; overflow-y: scroll;">               
@@ -175,7 +175,7 @@ export default {
       Calc_rate: '0.0000',
       sFunction: 'SMA-Simple Moving Average',
       sSymbol: 'IBM',
-      sSearch: '...',
+      sSearch: '',
       sSearchSelect: '',
       sFunctionSelect: '',
       sInterval: '1min',
@@ -201,7 +201,7 @@ export default {
                   { text: 'Timestamp', align: 'left', sortable: true, value: 'timestamp',class: 'primary white--text title' },
                   { text: 'Value', align: 'left', value: 'value',class: 'primary white--text title' }, ],                  
       results: [],
-      searchResults: ['msft', 'ibm', 'goog'],
+      searchResults: [],
       ts_results: [],
       ts_labels: [],
       ts_value: [],

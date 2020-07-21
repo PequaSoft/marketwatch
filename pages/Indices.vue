@@ -1065,15 +1065,15 @@ export default {
 
       this.$store.commit('globalData/addIndex', sSymbol)
         
-      if(sQuoteType == 'INDEX'){this.DoIndex(this.results_a, sSymbol, sSection , sSectionTime , '-', '-', '-', '-', '-')}
-      if(sQuoteType == 'FUTURE'){this.DoIndex(this.results_b, sSymbol, sSection , sSectionTime , '-', '-', '-', '-', '-')}
+      if(sQuoteType == 'INDEX'){this.DoIndex(this.results_a, sSymbol, sSection , sSectionTime , '-', '-', '-', '-', '-'); this.startupTab = 0;}
+      if(sQuoteType == 'FUTURE'){this.DoIndex(this.results_b, sSymbol, sSection , sSectionTime , '-', '-', '-', '-', '-'); this.startupTab = 1;}
 
-      if(sQuoteType == 'CURRENCY'){this.DoIndex(this.results_c, sSymbol, sSection , sSectionTime ,  '-', '-', '-', '-', '-')}
-      if(sQuoteType == 'CRYPTOCURRENCY'){this.DoIndex(this.results_d, sSymbol, sSection , sSectionTime,  '-', '-', '-', '-', '-')}
-      if(sQuoteType == 'EQUITY'){this.DoIndex(this.results_e, sSymbol, sSection , sSectionTime,  '-', '-', '-', '-', '-')}
-      if(sQuoteType == 'OPTION'){this.DoIndex(this.results_f, sSymbol, sSection , sSectionTime,  '-', '-', '-', '-', '-')}
-      if(sQuoteType == 'ETF'){this.DoIndex(this.results_g, sSymbol, sSection , sSectionTime,  '-', '-', '-', '-', '-')}
-      if(sQuoteType == 'MUTUALFUND'){this.DoIndex(this.results_h, sSymbol, sSection , sSectionTime,  '-', '-', '-', '-', '-')}
+      if(sQuoteType == 'CURRENCY'){this.DoIndex(this.results_c, sSymbol, sSection , sSectionTime ,  '-', '-', '-', '-', '-'); this.startupTab = 2;}
+      if(sQuoteType == 'CRYPTOCURRENCY'){this.DoIndex(this.results_d, sSymbol, sSection , sSectionTime,  '-', '-', '-', '-', '-'); this.startupTab = 3;}
+      if(sQuoteType == 'EQUITY'){this.DoIndex(this.results_e, sSymbol, sSection , sSectionTime,  '-', '-', '-', '-', '-'); this.startupTab = 4;}
+      if(sQuoteType == 'OPTION'){this.DoIndex(this.results_f, sSymbol, sSection , sSectionTime,  '-', '-', '-', '-', '-'); this.startupTab = 5;}
+      if(sQuoteType == 'ETF'){this.DoIndex(this.results_g, sSymbol, sSection , sSectionTime,  '-', '-', '-', '-', '-'); this.startupTab = 6;}
+      if(sQuoteType == 'MUTUALFUND'){this.DoIndex(this.results_h, sSymbol, sSection , sSectionTime,  '-', '-', '-', '-', '-'); this.startupTab = 7;}
 
       this.modal2 = false
 

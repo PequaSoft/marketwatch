@@ -24,7 +24,7 @@
                     <v-divider></v-divider>
                     <div style="padding: 15px;">
                       <v-layout row wrap style="height: 65px; width: 450px;" pl-3 justify-center>
-                        <v-text-field hint="enter companny name" dense outlined style="height: 65px;" v-model="sSearch"></v-text-field>     
+                        <v-text-field label="enter company name..." dense outlined style="height: 65px;" v-model="sSearch"></v-text-field>     
                         <v-btn text color="primary" @click="axiosLoadSearch">Search</v-btn>
                       </v-layout>
                        <div style="padding: 5px; height: 300px; text-align: left; overflow-y: scroll;">               
@@ -237,7 +237,7 @@ export default {
                   { text: 'Volume', align: 'left', value: 'volume',class: 'primary white--text title' },
                   { text: 'Dividend', align: 'left', value: 'divd',class: 'primary white--text title' }, ],                  
       results: [],
-      searchResults: ['msft', 'ibm', 'goog'],
+      searchResults: [],
       ts_results: [],
       ts_labels: [],
       ts_open: [],

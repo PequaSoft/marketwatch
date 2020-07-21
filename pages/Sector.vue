@@ -1,17 +1,12 @@
 <template>
   <div class="dashboard ">
       <div align="center">
-        <v-layout class="my-1" justify-center>
+        <v-layout justify-center>
           <h1 class="subheading grey--text text-center ">Sectors</h1>
         </v-layout>        
       <v-layout row wrap justify-center>
         <v-flex>
                 <v-card flat class="mx-auto" height="400" >
-            <v-card-text>
-              <p>
-                Sector Performance.
-              </p>
-            </v-card-text>
               <v-flex xs9 md9 lg9 >
                 <v-tabs vertical class="text-left" background-color=rgb(230,230,235)>
                       <v-tab>Real-Time Performance</v-tab>
