@@ -130,7 +130,7 @@ export default {
       this.axiosLoadUID()
       this.axiosLoadProfile()
       this.axiosAddUser()
-      this.$bus.$emit('EXIT_LOGIN', this.sUID, this.sPWD)
+      // this.$bus.$emit('EXIT_LOGIN', this.sUID, this.sPWD)
       
     },
     cleanString (parInput) {
@@ -177,7 +177,11 @@ export default {
           // alert('EXIT_LOGIN: ' + this.sUID)
         }
         if (loginResult !== 'Yes') {
-          this.sLoginStatus = 1
+          this.sLoginStatus = 0
+          this.$store.commit('globalData/setUID', '')
+          this.$store.commit('globalData/setPWD', '')
+          this.$store.commit('globalData/setLoginStatus', 0)
+          this.$store.commit('globalData/setExternalLogin', 0)
           // alert('Invalid Login-' + result + '|' + this.sLoginStatus)
           Swal.fire({
             title: '<font face="verdana" color="red">Login Error</font>',

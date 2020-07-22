@@ -1,7 +1,7 @@
 {
   "name": "MarketWatch",
   "version": "1.0.0",
-  "description": "My solid Nuxt.js project",
+  "description": "Financial Market Tracking Program",
   "author": "Frank",
   "private": true,
   "scripts": {
