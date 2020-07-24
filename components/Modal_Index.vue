@@ -63,6 +63,7 @@ export default {
       results_idx: [],
       series_a: [],
       ts_labels: [],
+      ts_holder: [],      
       ts_open: [],
       ts_high: [],
       ts_low: [],
@@ -320,10 +321,11 @@ export default {
         this.techType = 0
         this.ccyType = 0
         //this.equityType = false
+        if(sQuoteType == 'INDEX'){this.ccyType = 0} 
         if(sQuoteType == 'EQUITY'){this.equityType = 1} 
         //if(sQuoteType == 'CURRENCY'){this.equityType = 1} 
         if(sQuoteType == 'EQUITY'){this.techType = 1} 
-        if(sQuoteType == 'CURRENCY'){
+        if(sQuoteType == 'CURRENCY' ){
           this.ccyType = 1
           //alert('activate currency: ' + this.sIndex)
           var sCcyBuff = this.sIndex.split('/')
@@ -339,7 +341,7 @@ axiosLoadHistorical (parIndex) {
       token = localStorage.getItem("token")
       const formData = new FormData()
       var sformat = '0,0.0'
-      if(this.ccyType = 1){sformat = '0,0.0000'}
+      if(this.ccyType == 1){sformat = '0,0.0000'}
 
       formData.append("title", JSON.stringify(this.xUID))
       formData.append("content", JSON.stringify(this.xPWD))
@@ -387,15 +389,18 @@ axiosLoadHistorical (parIndex) {
           this.series_a.push({date: sDate, open: numeral(sOpen).format(sformat), high: numeral(sHigh).format(sformat), low: numeral(sLow).format(sformat), close: numeral(sClose).format(sformat), adjclose: numeral(sAdjClose).format(sformat), volume: numeral(sVolume).format('0,0')})
 
           this.ts_labels[i] = i+1
-          this.ts_open[i] = sOpen
-          this.ts_high[i] = sHigh
-          this.ts_low[i] = sLow
-          this.ts_close[i] = sClose
-          this.ts_adjclose[i] = sAdjClose
-          this.ts_volume[i] = sVolume
+          this.ts_open[arraylength - (i+1)] = sOpen
+          this.ts_high[arraylength - (i+1)] = sHigh
+          this.ts_low[arraylength - (i+1)] = sLow
+          this.ts_close[arraylength - (i+1)] = sClose
+          this.ts_adjclose[arraylength - (i+1)] = sAdjClose
+          this.ts_volume[arraylength - (i+1)] = sVolume
         
         }
         
+        //this.ts_holder = this.ts_open
+        //this.ts_open = this.ts_holder.reverse
+        //this.ts_close = this.ts_close.reverse
         this.chartShow = 0
         this.beginZero = false
         // if (parIndex == '^dji') {alert('array length: ' + parIndex + '|' + sSectionValue + '|' + sSectionHigh)}
