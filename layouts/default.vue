@@ -29,8 +29,8 @@
       </v-flex>
 
       <v-toolbar-title class="text-uppercase grey--text">
-        <span class="white--text font-weight-light">Market</span>
-        <span class="white--text">Watch</span>
+        <span class="white--text font-weight-light">Market Tracker</span>
+        <span class="white--text">Pro</span>
       </v-toolbar-title>
       <v-spacer />
 
@@ -97,7 +97,7 @@ export default {
       sPWD: '',
       LoginStatus: 0,
       links: [
-        { icon: 'dashboard', text: 'Market Watch', route: '/indices' },
+        { icon: 'dashboard', text: 'Market Tracker', route: '/indices' },
         { icon: 'dashboard', text: 'Technical', route: '/technical' },
         { icon: 'dashboard', text: 'Stocks', route: '/stocksymbol' },
         { icon: 'dashboard', text: 'Sector', route: '/sector' },
@@ -112,7 +112,7 @@ export default {
         },
         {
           icon: 'mdi-poll',
-          title: 'Market Watch',
+          title: 'Market Tracker',
           to: '/indices'
         },
         {

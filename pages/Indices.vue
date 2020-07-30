@@ -3,7 +3,7 @@
       <div align="center">
         <v-layout justify-center>
           <v-flex class="hidden-sm-and-down" md10>
-          <h1 class="subheading grey--text text-center ">Market Watch</h1>
+          <h1 class="subheading grey--text text-center ">Market Tracker</h1>
           </v-flex> 
           <v-flex class="hidden-sm-and-down" md1>
             <v-dialog v-model="modal2" :return-value.sync="sSearchSelect" persistent max-width="500px">
