@@ -23,7 +23,7 @@ export const state = () => ({
   //store_axios: 'https://proof.flagumina.vercel.app/',
   store_axios: 'https://proof.flagumina.vercel.app/',
 
-  //store_axios: 'http://localhost:3010/',
+  //store_axios: 'http://localhost:3020/',
   //store_Ccy: ['btc-BitCoin', 'cad-Canadian Dollar', 'chf-Swiss Franc', 'eur-Euro','gbp-British Pound Sterling','JPY-Japanese Yen', 'usd-United States Dollar'],
   store_Ccy: [],
   store_Tech: [],
@@ -190,6 +190,26 @@ export const mutations = {
       text
     })
   },  
+  delIndex (state, text) {
+    var indexLength = state.store_Index.length
+    var sBuff = state.store_Index[0]
+    var sTarget = text.toUpperCase()
+    //alert("Start Delete: " + indexLength + '|' + sBuff + '|' + text);
+
+    for (let i = 0; i < indexLength; i++) {
+      sBuff = state.store_Index[i]
+      sBuff = sBuff.toUpperCase()
+      //alert("Curr Delete: " + sBuff + '|' + sTarget);
+      if(sBuff == sTarget){
+        alert("Found Index: " + sTarget);
+        state.store_Index.splice(i, 1)
+        return;
+      }
+    }
+
+   state.store_Index[state.store_Index.length] = text
+   //alert("Add Index: " + text);
+  },    
   addIndex (state, text) {
     /*
     state.store_Index.push({
@@ -199,7 +219,7 @@ export const mutations = {
    
    state.store_Index[state.store_Index.length] = text
    //alert("Add Index: " + text);
-  },    
+  },      
   loadIndex (state) {
 
     if(state.store_Index.length > 0){return;}

@@ -158,7 +158,9 @@ export default {
     countdown: function() {
       //alert('Hello world')
       if(this.status == 1){
+        //this.copyTimeSeries()
         this.axiosLoadQuote (this.sTicker)
+
         //this.axiosLoadHistorical (this.sTicker)
         //this.getIntraDay ()
         }
@@ -406,6 +408,22 @@ axiosLoadHistorical (parIndex) {
         // if (parIndex == '^dji') {alert('array length: ' + parIndex + '|' + sSectionValue + '|' + sSectionHigh)}
       })
 
+    },  
+
+    copyTimeSeries() {
+      var arraylength =this.series_a.length
+      //alert('historical: ' + arraylength)
+      //alert('historical: ' + this.series_a[0].open)
+
+      for (let i = 0; i < arraylength; i++) {
+        //this.ts_open[i] = this.series_a[i].open
+        
+        //this.ts_close[i] = this.series_a[i].close
+        //this.ts_adjclose[i] = this.series_a[i].adjclose
+        //this.ts_high[i] = this.series_a[i].high
+        //this.ts_low[i] = this.series_a[i].low
+      }
+    
     },  
     exportTableToExcel(tableID, filename = ''){
       var downloadLink;

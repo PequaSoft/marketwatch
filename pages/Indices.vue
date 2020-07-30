@@ -8,6 +8,7 @@
           <v-flex class="hidden-sm-and-down" md1>
             <v-dialog v-model="modal2" :return-value.sync="sSearchSelect" persistent max-width="500px">
               <template v-slot:activator="{ on }">
+                <v-chip color="yellow darken-4" v-show="xLoginStatus !== 1" @click="showPush" text-color="white">Add Item<v-icon  right>mdi-plus</v-icon></v-chip>
                 <v-chip color="yellow darken-4" v-show="xLoginStatus === 1" ref="dialog2" v-on="on" text-color="white">Add item<v-icon v-on="on" right>mdi-plus</v-icon></v-chip>
               </template>
               <v-card>
@@ -208,6 +209,7 @@
     <profileModal v-show="isProfileVisible" @close="closeProfile" />
     <registerModal v-show="isRegisterVisible" @close="closeRegister" />
     <indexModal v-show="isIndexVisible" @close="closeIndex" />
+    <pushModal v-show="isPushVisible" @close="closePush" />
     </div>
 </template>
 
@@ -221,6 +223,7 @@ import loginModal from '@/components/Modal_Login.vue'
 import profileModal from '@/components/Modal_Profile.vue'
 import registerModal from '@/components/Modal_Register.vue'
 import indexModal from '@/components/Modal_Index.vue'
+import pushModal from '@/components/Modal_Push.vue'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
@@ -235,6 +238,7 @@ export default {
     profileModal,
     registerModal,
     indexModal,
+    pushModal,
     ChartLine
   },
   props: ["id"],
@@ -245,6 +249,7 @@ export default {
       isProfileVisible: false,
       isRegisterVisible: false,
       isIndexVisible: false,
+      isPushVisible: false,
       modal2: false,
       itemsx: ['Per Year', 'Per Month', 'Per Quarter'],
       searchResults: ['msft', 'ibm', 'goog'],
@@ -337,11 +342,43 @@ export default {
   },
   */
   created () {
+    this.$bus.$on('DELETE_SYMBOL', (data) => {
+      var sBuff =data.split("|")
+      var sQuote = sBuff[0]
+      var sItem = sBuff[1]
+      //alert('Delete symbol: '+ data);
+
+      const formData = new FormData()    
+          
+      formData.append("title", JSON.stringify(this.xUID))
+      formData.append("content", JSON.stringify(this.xPWD))
+      formData.append("Index", sBuff[1])
+
+      axios.post(this.xAxios + 'indexdelete', formData).then(res => {
+        var resultx = JSON.stringify(res.data.rows)
+        })
+      //this.$store.commit('globalData/delIndex', sItem)
+      
+      if(sQuote == 'INDEX'){this.delIndex(this.results_a, sItem)}
+      if(sQuote == 'FUTURE'){this.delIndex(this.results_b, sItem)}
+
+      if(sQuote == 'CURRENCY'){this.delIndex(this.results_c, sItem)}
+      if(sQuote == 'CRYPTOCURRENCY'){this.delIndex(this.results_d, sItem)}
+      if(sQuote == 'EQUITY'){this.delIndex(this.results_e, sItem)}
+        
+      if(sQuote == 'OPTION'){this.delIndex(this.results_f, sItem)}
+      if(sQuote == 'ETF'){this.delIndex(this.results_g, sItem)}
+      if(sQuote == 'MUTUALFUND'){this.delIndex(this.results_h, sItem)}
+
+      this.$store.commit('globalData/loadIndex')
+      //alert('Delete symbol: '+ sBuff[0] + '-' + sBuff[1]);
+      
+    })
     this.$bus.$on('DELETE_CONFIRMED', (data) => {
       alert('Delete confirmed'+ data);
       // this.DoDeleteLoan (data)
       //alert('Delete confirmed'+ data);
-    })
+    })    
     this.$bus.$on('HDR_LOGIN', (data) => {
       this.$bus.$emit('ACTIVATE_LOGIN', 'abc')
       this.isLoginVisible = true
@@ -915,12 +952,15 @@ export default {
       this.startTimer(1)
       this.isIndexVisible = false
     },
+    closePush () {
+      this.isPushVisible = false
+    },    
     showIndex () {
-      //this.startTimer(3600)
-      // this.$bus.$emit('ACTIVATE_LOANPMTS', 'abc')
       this.isIndexVisible = true
     },
-
+    showPush () {
+      this.isPushVisible = true
+    },
     axiosLoadSearch () {
       const formData = new FormData()
 
@@ -1072,7 +1112,6 @@ export default {
       formData.append("title", JSON.stringify(this.xUID))
       formData.append("content", JSON.stringify(this.xPWD))
       formData.append("Index", sSymbol)
-      
 
       axios.post(this.xAxios + 'indexadd', formData).then(res => {
         var resultx = JSON.stringify(res.data.rows)
@@ -1106,35 +1145,79 @@ export default {
     
     },
     deleteItem (parQuote,parItem){
+      var sDelMsg = 'Delete: '+ parItem.section + ' - Are you sure?'
+      var localUID = this.xUID
+      var localPWD = this.xPWD
+      //var localAxios = this.xAxios
+      var localBus = this.$bus
+      
+      if(this.xLoginStatus == 1){
+        Swal.fire({
+          title: '<font face="verdana" color="red">Delete Symbol  ?</font>',
+          html: sDelMsg,
+          type: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes'
+          }).then(function(isConfirm){
+            var res=JSON.stringify(isConfirm.value)
+          
+            if (res === 'true') {
+              //alert('Delete Symbol-Yes: ' + parItem.index )
+              const formData = new FormData()    
+          
+              localBus.$emit('DELETE_SYMBOL', parQuote + '|' + parItem.index)         
+              //alert('Deleted Symbol-' + parItem.index + '|' + parQuote)    
+              }else{
+              //alert('Delete Symbol-No: ' + parItem.index)
+              }
+            })
+
+        }else{
+        this.showPush()
+
+        //alert('Please Login-' )    
+      }
+    },
+
+    deleteItem_old (parQuote,parItem){
       var select = this;
       //alert('Delete Symbol-' + parItem.index)
       var sDelMsg = 'Delete: '+ parItem.section + ' - Are you sure?'
 
-      if (!confirm(sDelMsg)) {
-        return;
-      }
+      if(this.xLoginStatus == 1){
+        if (!confirm(sDelMsg)) {
+          return;
+        }
 
-      const formData = new FormData()    
+        const formData = new FormData()    
           
-      formData.append("title", JSON.stringify(this.xUID))
-      formData.append("content", JSON.stringify(this.xPWD))
-      formData.append("Index", parItem.index)
+        formData.append("title", JSON.stringify(this.xUID))
+        formData.append("content", JSON.stringify(this.xPWD))
+        formData.append("Index", parItem.index)
       
-      axios.post(this.xAxios + 'indexdelete', formData).then(res => {
+        axios.post(this.xAxios + 'indexdelete', formData).then(res => {
             var resultx = JSON.stringify(res.data.rows)
           })
       
-      if(parQuote == 'INDEX'){this.delIndex(this.results_a, parItem.index)}
-      if(parQuote == 'FUTURE'){this.delIndex(this.results_b, parItem.index)}
+        if(parQuote == 'INDEX'){this.delIndex(this.results_a, parItem.index)}
+        if(parQuote == 'FUTURE'){this.delIndex(this.results_b, parItem.index)}
 
-      if(parQuote == 'CURRENCY'){this.delIndex(this.results_c, parItem.index)}
-      if(parQuote == 'CRYPTOCURRENCY'){this.delIndex(this.results_d, parItem.index)}
-      if(parQuote == 'EQUITY'){this.delIndex(this.results_e, parItem.index)}
-      if(parQuote == 'OPTION'){this.delIndex(this.results_f, parItem.index)}
-      if(parQuote == 'ETF'){this.delIndex(this.results_g, parItem.index)}
-      if(parQuote == 'MUTUALFUND'){this.delIndex(this.results_h, parItem.index)}
+        if(parQuote == 'CURRENCY'){this.delIndex(this.results_c, parItem.index)}
+        if(parQuote == 'CRYPTOCURRENCY'){this.delIndex(this.results_d, parItem.index)}
+        if(parQuote == 'EQUITY'){this.delIndex(this.results_e, parItem.index)}
+        if(parQuote == 'OPTION'){this.delIndex(this.results_f, parItem.index)}
+        if(parQuote == 'ETF'){this.delIndex(this.results_g, parItem.index)}
+        if(parQuote == 'MUTUALFUND'){this.delIndex(this.results_h, parItem.index)}
 
-      alert('Deleted Symbol-' + parItem.index)    
+        alert('Deleted Symbol-' + parItem.index)    
+      }
+      else{
+        this.showPush()
+
+        //alert('Please Login-' )    
+      }
 
       /*
       Swal.fire({
