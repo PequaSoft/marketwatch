@@ -239,6 +239,25 @@ export default {
     xCcy: 'globalData/get_CcyList',
     xAlphaKey: 'globalData/get_AlphaKey',
   }),
+  metaInfo: {
+    title: "Foreign Exchange",
+    meta: [
+      { vmid: 'og:title', property: 'og:title', content: 'Foreign Exchange Page' },
+      { vmid: 'og:site_name', property: 'og:site_name', content: 'Foreign Exchange' },
+      { vmid: 'og:type', property: 'og:type', content: 'Website'},
+      { vmid: 'og:url', property: 'og:url', content: 'https://markettrackerpro.com/forex'},
+      { vmid: 'og:description', property: 'og:description', content: 'This is where users can analyze foreign exchange symbol data.'},
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:site', content: '@pequasoft' },
+      { name: 'twitter:title', content: 'Foreign Exchange' },
+      { name: 'twitter:description', content: 'This is where users can analyze foreign exchange symbol data.' },
+      { name: 'twitter:url', content: 'https://twitter.com/PequaSoft' },
+      { name: 'twitter:domain', content: 'PequaSoft' },
+      { itemprop: 'name', content: 'Foreign Exchange' },
+      { itemprop: 'description', content: 'This is where users can analyze foreign exchange symbol data.' },
+      { itemprop: 'image', content: 'https://markettrackerpro.com/forex' }
+    ]
+  },
   created () {
     this.$bus.$on('HDR_LOGIN', (data) => {
       this.$bus.$emit('ACTIVATE_LOGIN', 'abc')

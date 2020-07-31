@@ -217,6 +217,25 @@ export default {
     xForex: 'globalData/get_forex',
     xAlphaKey: 'globalData/get_AlphaKey'
   }),
+  metaInfo: {
+    title: "Sector",
+    meta: [
+      { vmid: 'og:title', property: 'og:title', content: 'Sector Page' },
+      { vmid: 'og:site_name', property: 'og:site_name', content: 'Sector' },
+      { vmid: 'og:type', property: 'og:type', content: 'Website'},
+      { vmid: 'og:url', property: 'og:url', content: 'https://markettrackerpro.com/sector'},
+      { vmid: 'og:description', property: 'og:description', content: 'This is where users can analyze sector data.'},
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:site', content: '@pequasoft' },
+      { name: 'twitter:title', content: 'Sector' },
+      { name: 'twitter:description', content: 'This is where users can analyze sector data.' },
+      { name: 'twitter:url', content: 'https://twitter.com/PequaSoft' },
+      { name: 'twitter:domain', content: 'PequaSoft' },
+      { itemprop: 'name', content: 'Sector' },
+      { itemprop: 'description', content: 'This is where users can analyze sector data.' },
+      { itemprop: 'image', content: 'https://markettrackerpro.com/sector' }
+    ]
+  },
   created () {
     this.$bus.$on('HDR_LOGIN', (data) => {
       this.$bus.$emit('ACTIVATE_LOGIN', 'abc')

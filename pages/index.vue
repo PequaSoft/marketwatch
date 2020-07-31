@@ -15,7 +15,7 @@
           </v-flex>
         </v-card-title>
         <v-card-text class="grey--text text--lighten-2">
-          <p>MarketWatch is a financial market data program developed in the Nuxt Vuetify framework.</p>
+          <p>MarketTrackerPro is a financial market data program developed in the Nuxt Vuetify framework.</p>
           <p>
             <br>
             <br>
@@ -117,10 +117,10 @@ export default {
   metaInfo: {
     title: 'Index',
     meta: [
-      { vmid: 'og:title', property: 'og:title', content: 'Loan Master Menu' },
-      { vmid: 'og:site_name', property: 'og:site_name', content: 'LoanMaster' },
+      { vmid: 'og:title', property: 'og:title', content: 'MarketTrackerPro Menu' },
+      { vmid: 'og:site_name', property: 'og:site_name', content: 'MarketTrackerPro' },
       { vmid: 'og:type', property: 'og:type', content: 'Website' },
-      { vmid: 'og:url', property: 'og:url', content: 'https://pequasoft.com' },
+      { vmid: 'og:url', property: 'og:url', content: 'https://markettrackerpro.com' },
       { vmid: 'og:description', property: 'og:description', content: 'This is where users can view the site' },
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: '@pequasoft' },

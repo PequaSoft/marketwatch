@@ -276,6 +276,25 @@ export default {
     xForex: 'globalData/get_forex',
     xAlphaKey: 'globalData/get_AlphaKey',
   }),
+  metaInfo: {
+    title: "Stock Symbol",
+    meta: [
+      { vmid: 'og:title', property: 'og:title', content: 'Stock Symbol Page' },
+      { vmid: 'og:site_name', property: 'og:site_name', content: 'Stock Symbol' },
+      { vmid: 'og:type', property: 'og:type', content: 'Website'},
+      { vmid: 'og:url', property: 'og:url', content: 'https://markettrackerpro.com/stocksymbol'},
+      { vmid: 'og:description', property: 'og:description', content: 'This is where users can analyze stock symbol data.'},
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:site', content: '@pequasoft' },
+      { name: 'twitter:title', content: 'Stock Symbol' },
+      { name: 'twitter:description', content: 'This is where users can analyze stock symbol data.' },
+      { name: 'twitter:url', content: 'https://twitter.com/PequaSoft' },
+      { name: 'twitter:domain', content: 'PequaSoft' },
+      { itemprop: 'name', content: 'Stock Symbol' },
+      { itemprop: 'description', content: 'This is where users can analyze stock symbol data.' },
+      { itemprop: 'image', content: 'https://markettrackerpro.com/stocksymbol' }
+    ]
+  },
   created () {
     this.$bus.$on('HDR_LOGIN', (data) => {
       // alert('Login')

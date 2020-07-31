@@ -42,37 +42,33 @@
                 <v-btn text color="primary" @click="modal2 = false">Cancel</v-btn>
               </v-card>
             </v-dialog>
-
-
-
           </v-flex> 
         </v-layout>        
       <v-layout row wrap justify-center>
         <v-flex>
-                <v-card flat class="mx-auto" height="400" >
-            
-              <v-flex xs11 md12 lg11 >
-                <v-tabs class="text-left" v-model="startupTab" background-color=rgb(230,230,235)>
-                  <v-tab>Index</v-tab>
-                  <v-tab>Futures</v-tab>
-                  <v-tab>Currency</v-tab>
-                  <v-tab>Crypto</v-tab>
-                  <v-tab>Equities</v-tab>                      
-                  <v-tab>Options</v-tab>                      
-                  <v-tab>ETF</v-tab>                      
-                  <v-tab>Mutual Funds</v-tab>                      
-                <v-tab-item>
-                  <v-card flat height="400">
-                    <v-flex xs9 md12 lg12 class="my-1">
-                      <v-data-table id="IndicesTable_1" :headers="headers" :sort-by="['section']" :items="results_a" :items-per-page="10" class="elevation-1 fixed-header">
-                        <template v-slot:item.actions="{ item }" v-slot:activator="{ on, attrs }">
-                          <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
-                          <v-icon color="green darken-2" @mouseover="toolTipView = true" @mouseleave="toolTipView = false" @click="handleClick('INDEX',item)">mdi-format-list-bulleted-square</v-icon>
-                          <v-tooltip left v-model="toolTipDelete">Delete Item</v-tooltip>
-                          <v-icon color="red darken-2" @mouseover="toolTipDelete = true" @mouseleave="toolTipDelete = false" @click="deleteItem('INDEX',item)">mdi-delete</v-icon>
-                        </template>
-                      </v-data-table> 
-                    </v-flex>   
+          <v-card flat class="mx-auto" height="400" >
+            <v-flex xs12 sm12 md12 lg11 >
+              <v-tabs class="text-left" v-model="startupTab" background-color=rgb(230,230,235)>
+                <v-tab>Index</v-tab>
+                <v-tab>Futures</v-tab>
+                <v-tab>Currency</v-tab>
+                <v-tab>Crypto</v-tab>
+                <v-tab>Equities</v-tab>                      
+                <v-tab>Options</v-tab>                      
+                <v-tab>ETF</v-tab>                      
+                <v-tab>Mutual Funds</v-tab>                      
+              <v-tab-item>
+              <v-card flat height="400">
+                <v-flex xs12 sm12 md12 lg12 class="my-1">
+                  <v-data-table id="IndicesTable_1" :headers="headers" :sort-by="['section']" :items="results_a" :items-per-page="10" class="elevation-1 fixed-header">
+                    <template v-slot:item.actions="{ item }" v-slot:activator="{ on, attrs }">
+                      <v-tooltip left v-model="toolTipView">View Item</v-tooltip>
+                      <v-icon color="green darken-2" @mouseover="toolTipView = true" @mouseleave="toolTipView = false" @click="handleClick('INDEX',item)">mdi-format-list-bulleted-square</v-icon>
+                      <v-tooltip left v-model="toolTipDelete">Delete Item</v-tooltip>
+                      <v-icon color="red darken-2" @mouseover="toolTipDelete = true" @mouseleave="toolTipDelete = false" @click="deleteItem('INDEX',item)">mdi-delete</v-icon>
+                    </template>
+                  </v-data-table> 
+                </v-flex>   
                     <div style="padding-top: 10px;">  
                      <v-btn color="primary" style="width: 200px;" @click="exportTableToExcel('IndicesTable_1','sectordata')">Export to Excel</v-btn>                           
                     </div>
@@ -326,6 +322,25 @@ export default {
       resetButton: false,
       nonblankRules: [v => !!v || 'The input is required']
     }
+  },
+  metaInfo: {
+    title: "Market Tracker",
+    meta: [
+      { vmid: 'og:title', property: 'og:title', content: 'Market Tracker Page' },
+      { vmid: 'og:site_name', property: 'og:site_name', content: 'Market Tracker' },
+      { vmid: 'og:type', property: 'og:type', content: 'Website'},
+      { vmid: 'og:url', property: 'og:url', content: 'https://markettrackerpro.com/indices'},
+      { vmid: 'og:description', property: 'og:description', content: 'This is where users can view their current market data'},
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:site', content: '@pequasoft' },
+      { name: 'twitter:title', content: 'Market Tracker' },
+      { name: 'twitter:description', content: 'This is where users can view their current market data.' },
+      { name: 'twitter:url', content: 'https://twitter.com/PequaSoft' },
+      { name: 'twitter:domain', content: 'PequaSoft' },
+      { itemprop: 'name', content: 'Market Tracker' },
+      { itemprop: 'description', content: 'This is where users can view their current market data.' },
+      { itemprop: 'image', content: 'https://markettrackerpro.com/indices' }
+    ]
   },
   computed: mapGetters({
     xUID: 'globalData/get_uid',

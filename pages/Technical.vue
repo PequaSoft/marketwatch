@@ -228,6 +228,25 @@ export default {
     xTech: 'globalData/get_TechList',
     xAlphaKey: 'globalData/get_AlphaKey'
   }),
+  metaInfo: {
+    title: "Technical",
+    meta: [
+      { vmid: 'og:title', property: 'og:title', content: 'Technical Page' },
+      { vmid: 'og:site_name', property: 'og:site_name', content: 'Technical' },
+      { vmid: 'og:type', property: 'og:type', content: 'Website'},
+      { vmid: 'og:url', property: 'og:url', content: 'https://markettrackerpro.com/technical'},
+      { vmid: 'og:description', property: 'og:description', content: 'This is where users can analyze technical symbol data.'},
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:site', content: '@pequasoft' },
+      { name: 'twitter:title', content: 'Technical' },
+      { name: 'twitter:description', content: 'This is where users can analyze technical symbol data.' },
+      { name: 'twitter:url', content: 'https://twitter.com/PequaSoft' },
+      { name: 'twitter:domain', content: 'PequaSoft' },
+      { itemprop: 'name', content: 'Technical' },
+      { itemprop: 'description', content: 'This is where users can analyze technical symbol data.' },
+      { itemprop: 'image', content: 'https://markettrackerpro.com/technical' }
+    ]
+  },
   created () {
     this.$bus.$on('HDR_LOGIN', (data) => {
       this.$bus.$emit('ACTIVATE_LOGIN', 'abc')

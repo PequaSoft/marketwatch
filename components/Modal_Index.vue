@@ -350,6 +350,7 @@ axiosLoadHistorical (parIndex) {
       formData.append("index", parIndex)
       formData.append("count", 50)
       
+      //alert('start historical:')
       //(async () => {  
       axios.post(this.xAxios + 'xhistorical', formData).then((res) => {
         var result = JSON.stringify(res.data)
