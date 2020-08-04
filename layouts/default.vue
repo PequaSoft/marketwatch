@@ -29,8 +29,9 @@
       </v-flex>
 
       <v-toolbar-title class="text-uppercase grey--text">
-        <span class="white--text font-weight-light">Market Tracker</span>
-        <span class="white--text">Pro</span>
+        <span class="white--text">Market</span>
+        <span class="white--text font-weight-light">Tracker</span>
+        <span class="lime--text">Pro</span>
       </v-toolbar-title>
       <v-spacer />
 
