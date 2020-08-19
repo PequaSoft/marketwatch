@@ -21,7 +21,8 @@ export const state = () => ({
   //store_axios: 'https://bourbon.flagumina.now.sh/',
   //store_axios: 'https://proof.flagumina.now.sh/',
   //store_axios: 'https://proof.flagumina.vercel.app/',
-  store_axios: 'https://proof.flagumina.vercel.app/',
+  //store_axios: 'https://proof.flagumina.vercel.app/',
+  store_axios: 'https://proof-build.vercel.app/',
 
   //store_axios: 'http://localhost:3010/',
   //store_Ccy: ['btc-BitCoin', 'cad-Canadian Dollar', 'chf-Swiss Franc', 'eur-Euro','gbp-British Pound Sterling','JPY-Japanese Yen', 'usd-United States Dollar'],
